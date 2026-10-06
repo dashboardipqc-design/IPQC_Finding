@@ -441,7 +441,7 @@ if submitted:
     ):
 
         st.error(
-            "Auditee Badge must be exactly 6 digits."
+            "Auditee Badge must be six (6) numerical digits."
         )
 
     elif auditor.strip() == "":
@@ -456,7 +456,7 @@ if submitted:
     ):
 
         st.error(
-            "Auditor Badge must be exactly 6 digits."
+            "Auditor Badge must be six (6) numerical digits."
         )
         
     else:
