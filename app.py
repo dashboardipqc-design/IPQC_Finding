@@ -276,6 +276,16 @@ equipment_id = st.text_input(
 
 
 # ==========================================
+# LOT NUMBER
+# ==========================================
+
+lot_number = st.text_input(
+    "Lot Number (Optional)",
+    placeholder="E.g. WCA5225"
+)
+
+
+# ==========================================
 # CATEGORY
 # ==========================================
 
@@ -295,7 +305,6 @@ category = st.selectbox(
     index=None,
     placeholder="Select Category"
 )
-
 
 # ==========================================
 # FINDING DESCRIPTION
@@ -471,6 +480,11 @@ if submitted:
             "area": area,
             "station": station,
             "equipment_id": equipment_id,
+            "lot_number": (
+                lot_number.strip()
+                if lot_number.strip()
+                else None
+            ),
             "category": category,
             "finding_description": finding,
             "interview_result": interview_result,
