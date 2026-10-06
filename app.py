@@ -350,7 +350,8 @@ containment_action = st.text_area(
 
 auditee = st.text_input(
     "Auditee",
-    placeholder="Enter auditee badge"
+    placeholder="e.g. 505641",
+    max_chars=6
 )
 
 
@@ -360,7 +361,8 @@ auditee = st.text_input(
 
 auditor = st.text_input(
     "Auditor",
-    placeholder="Enter auditor badge"
+    placeholder="e.g. 508261",
+    max_chars=6
 )
 
 
@@ -433,12 +435,30 @@ if submitted:
             "Please enter an Auditee."
         )
 
+    elif (
+        not auditee.strip().isdigit()
+        or len(auditee.strip()) != 6
+    ):
+
+        st.error(
+            "Auditee Badge must be exactly 6 digits."
+        )
+
     elif auditor.strip() == "":
 
         st.error(
             "Please enter an Auditor."
         )
 
+    elif (
+        not auditor.strip().isdigit()
+        or len(auditor.strip()) != 6
+    ):
+
+        st.error(
+            "Auditor Badge must be exactly 6 digits."
+        )
+        
     else:
 
         # ----------------------------------
