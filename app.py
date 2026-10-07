@@ -230,6 +230,18 @@ st.text_input(
 
 
 # ==========================================
+# FACTORY
+# ==========================================
+
+factory = st.selectbox(
+    "Factory",
+    ["BKF", "BLF", "SPF"],
+    index=None,
+    placeholder="Select Factory"
+)
+
+
+# ==========================================
 # AREA
 # ==========================================
 
@@ -239,7 +251,6 @@ area = st.selectbox(
     index=None,
     placeholder="Select Area"
 )
-
 
 # ==========================================
 # STATION
@@ -387,11 +398,17 @@ if submitted:
     # VALIDATION
     # --------------------------------------
 
-    if area is None:
+if factory is None:
 
-        st.error(
-            "Please select an Area."
-        )
+    st.error(
+        "Please select a Factory."
+    )
+
+elif area is None:
+
+    st.error(
+        "Please select an Area."
+    )
 
     elif station is None:
 
@@ -497,8 +514,8 @@ if submitted:
         finding_record = {
             "finding_datetime": finding_datetime,
             "shift": submitted_shift,
+            "factory": factory,
             "area": area,
-            "station": station,
             "equipment_id": equipment_id,
             "lot_number": (
                 lot_number.strip()
