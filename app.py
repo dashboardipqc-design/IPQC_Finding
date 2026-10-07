@@ -238,7 +238,8 @@ factory = st.selectbox(
     "Factory",
     ["BKF", "BLF", "SPF"],
     index=None,
-    placeholder="Select Factory"
+    placeholder="Select Factory",
+    key="factory"
 )
 
 
@@ -250,8 +251,10 @@ area = st.selectbox(
     "Area",
     ["DP", "FOL", "MOL", "EOL"],
     index=None,
-    placeholder="Select Area"
+    placeholder="Select Area",
+    key="area"
 )
+
 
 # ==========================================
 # STATION
@@ -263,7 +266,8 @@ if area is not None:
         "Station",
         stations[area],
         index=None,
-        placeholder="Select Station"
+        placeholder="Select Station",
+        key="station"
     )
 
 else:
@@ -273,7 +277,8 @@ else:
         [],
         index=None,
         placeholder="Select Area first",
-        disabled=True
+        disabled=True,
+        key="station"
     )
 
 
@@ -283,7 +288,8 @@ else:
 
 equipment_id = st.text_input(
     "Equipment / Station ID",
-    placeholder="E.g. ICO-02"
+    placeholder="E.g. ICO-02",
+    key="equipment_id"
 )
 
 
@@ -293,7 +299,8 @@ equipment_id = st.text_input(
 
 lot_number = st.text_input(
     "Lot Number (Optional)",
-    placeholder="E.g. WCA5225"
+    placeholder="E.g. WCA5225",
+    key="lot_number"
 )
 
 
@@ -315,8 +322,10 @@ category = st.selectbox(
         "Personnel Compliance - Not following cleanroom, 5S, ESD, discipline requirement"
     ],
     index=None,
-    placeholder="Select Category"
+    placeholder="Select Category",
+    key="category"
 )
+
 
 # ==========================================
 # FINDING DESCRIPTION
@@ -328,7 +337,8 @@ finding = st.text_area(
         "During [when], [what] was observed at [where]. "
         "This does not meet [requirement]. "
         "Acknowledged by [supervisor/leader]."
-    )
+    ),
+    key="finding"
 )
 
 
@@ -340,7 +350,8 @@ interview_result = st.text_area(
     "Interview Result",
     placeholder=(
         "Enter explanation from auditee or supervisor"
-    )
+    ),
+    key="interview_result"
 )
 
 
@@ -352,7 +363,8 @@ containment_action = st.text_area(
     "Containment Action",
     placeholder=(
         "Enter immediate containment action taken"
-    )
+    ),
+    key="containment_action"
 )
 
 
@@ -363,7 +375,8 @@ containment_action = st.text_area(
 auditee = st.text_input(
     "Auditee",
     placeholder="e.g. 505641",
-    max_chars=6
+    max_chars=6,
+    key="auditee"
 )
 
 
@@ -374,9 +387,9 @@ auditee = st.text_input(
 auditor = st.text_input(
     "Auditor",
     placeholder="e.g. 508261",
-    max_chars=6
+    max_chars=6,
+    key="auditor"
 )
-
 
 # ==========================================
 # SUBMIT BUTTON
@@ -644,12 +657,41 @@ if submitted:
                 "Open"
             )
 
+
+            # ----------------------------------
+            # WAIT 5 SECONDS
+            # ----------------------------------
+
             time_module.sleep(5)
+
+
+            # ----------------------------------
+            # CLEAR FORM AFTER SUCCESSFUL SUBMIT
+            # ----------------------------------
+
+            for key in [
+                "factory",
+                "area",
+                "station",
+                "equipment_id",
+                "lot_number",
+                "category",
+                "finding",
+                "interview_result",
+                "containment_action",
+                "auditee",
+                "auditor"
+            ]:
+
+                st.session_state.pop(
+                    key,
+                    None
+                )
+
 
             st.session_state.finding_submitted = False
 
             st.rerun()
-
         
         # ----------------------------------
         # DATABASE ERROR
