@@ -398,17 +398,17 @@ if submitted:
     # VALIDATION
     # --------------------------------------
 
-if factory is None:
+    if factory is None:
 
-    st.error(
-        "Please select a Factory."
-    )
+        st.error(
+            "Please select a Factory."
+        )
 
-elif area is None:
+    elif area is None:
 
-    st.error(
-        "Please select an Area."
-    )
+        st.error(
+            "Please select an Area."
+        )
 
     elif station is None:
 
@@ -475,8 +475,16 @@ elif area is None:
         st.error(
             "Auditor Badge must be six (6) numerical digits."
         )
-        
+
     else:
+
+        # ----------------------------------
+        # CAPTURE ACTUAL SUBMISSION TIME
+        # ----------------------------------
+
+        submitted_datetime = datetime.now(
+            ZoneInfo("Asia/Kuala_Lumpur")
+        )
 
         # ----------------------------------
         # CAPTURE ACTUAL SUBMISSION TIME
