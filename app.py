@@ -434,6 +434,12 @@ submitted = st.button(
     disabled=st.session_state.finding_submitted
 )
 
+
+if st.session_state.finding_submitted:
+
+    st.success(
+        "Finding successfully submitted!"
+    )
 # ==========================================
 # SUBMISSION
 # ==========================================
@@ -609,10 +615,6 @@ if submitted:
             # ----------------------------------
 
             st.session_state.finding_submitted = True
-
-            st.success(
-                "Finding submitted successfully!"
-            )
 
             st.rerun()
 
