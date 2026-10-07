@@ -400,6 +400,39 @@ if "finding_submitted" not in st.session_state:
     st.session_state.finding_submitted = False
 
 
+if st.session_state.finding_submitted:
+
+    st.success(
+        "Finding submitted successfully! "
+        "The form will refresh in 3 seconds."
+    )
+
+    time_module.sleep(3)
+
+    for key in [
+        "factory",
+        "area",
+        "station",
+        "equipment_id",
+        "lot_number",
+        "category",
+        "finding",
+        "interview_result",
+        "containment_action",
+        "auditee",
+        "auditor"
+    ]:
+
+        st.session_state.pop(
+            key,
+            None
+        )
+
+    st.session_state.finding_submitted = False
+
+    st.rerun()
+
+
 submitted = st.button(
     "Submit Finding",
     type="primary",
@@ -585,9 +618,10 @@ if submitted:
 
             st.success(
                 "Finding submitted successfully! "
-                "The form will refresh in 5 seconds."
+                "The form will refresh in 3 seconds."
             )
 
+            st.rerun()
 
             # ----------------------------------
             # DISPLAY SUBMITTED RECORD
@@ -657,41 +691,6 @@ if submitted:
                 "Open"
             )
 
-
-            # ----------------------------------
-            # WAIT 5 SECONDS
-            # ----------------------------------
-
-            time_module.sleep(5)
-
-
-            # ----------------------------------
-            # CLEAR FORM AFTER SUCCESSFUL SUBMIT
-            # ----------------------------------
-
-            for key in [
-                "factory",
-                "area",
-                "station",
-                "equipment_id",
-                "lot_number",
-                "category",
-                "finding",
-                "interview_result",
-                "containment_action",
-                "auditee",
-                "auditor"
-            ]:
-
-                st.session_state.pop(
-                    key,
-                    None
-                )
-
-
-            st.session_state.finding_submitted = False
-
-            st.rerun()
         
         # ----------------------------------
         # DATABASE ERROR
