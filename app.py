@@ -524,6 +524,7 @@ if submitted:
             "shift": submitted_shift,
             "factory": factory,
             "area": area,
+            "station": station,
             "equipment_id": equipment_id,
             "lot_number": (
                 lot_number.strip()
