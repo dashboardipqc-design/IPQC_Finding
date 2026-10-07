@@ -1,5 +1,4 @@
 import streamlit as st
-import time as time_module
 from datetime import datetime, date, time, timedelta
 from zoneinfo import ZoneInfo
 from supabase import create_client
@@ -419,12 +418,12 @@ auditor = st.text_input(
     max_chars=6,
     key="auditor"
 )
+
 # ==========================================
 # SUBMIT BUTTON
 # ==========================================
 
 if "finding_submitted" not in st.session_state:
-
     st.session_state.finding_submitted = False
 
 
@@ -434,21 +433,6 @@ submitted = st.button(
     width="stretch",
     disabled=st.session_state.finding_submitted
 )
-
-
-if st.session_state.finding_submitted:
-
-    st.success(
-        "Finding submitted successfully! "
-        "The form will refresh in 3 seconds."
-    )
-
-    time_module.sleep(3)
-
-    st.session_state.reset_finding_form = True
-    st.session_state.finding_submitted = False
-
-    st.rerun()
 
 # ==========================================
 # SUBMISSION
@@ -627,8 +611,7 @@ if submitted:
             st.session_state.finding_submitted = True
 
             st.success(
-                "Finding submitted successfully! "
-                "The form will refresh in 3 seconds."
+                "Finding submitted successfully!"
             )
 
             st.rerun()
