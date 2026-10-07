@@ -32,6 +32,35 @@ def init_supabase():
 
 supabase = init_supabase()
 
+# ==========================================
+# RESET FINDING FORM
+# ==========================================
+
+if st.session_state.get(
+    "reset_finding_form",
+    False
+):
+
+    for key in [
+        "factory",
+        "area",
+        "station",
+        "equipment_id",
+        "lot_number",
+        "category",
+        "finding",
+        "interview_result",
+        "containment_action",
+        "auditee",
+        "auditor"
+    ]:
+
+        st.session_state.pop(
+            key,
+            None
+        )
+
+    st.session_state.reset_finding_form = False
 
 # ==========================================
 # STATION LIST BY AREA
@@ -390,7 +419,6 @@ auditor = st.text_input(
     max_chars=6,
     key="auditor"
 )
-
 # ==========================================
 # SUBMIT BUTTON
 # ==========================================
@@ -398,6 +426,14 @@ auditor = st.text_input(
 if "finding_submitted" not in st.session_state:
 
     st.session_state.finding_submitted = False
+
+
+submitted = st.button(
+    "Submit Finding",
+    type="primary",
+    width="stretch",
+    disabled=st.session_state.finding_submitted
+)
 
 
 if st.session_state.finding_submitted:
@@ -409,36 +445,10 @@ if st.session_state.finding_submitted:
 
     time_module.sleep(3)
 
-    for key in [
-        "factory",
-        "area",
-        "station",
-        "equipment_id",
-        "lot_number",
-        "category",
-        "finding",
-        "interview_result",
-        "containment_action",
-        "auditee",
-        "auditor"
-    ]:
-
-        st.session_state.pop(
-            key,
-            None
-        )
-
+    st.session_state.reset_finding_form = True
     st.session_state.finding_submitted = False
 
     st.rerun()
-
-
-submitted = st.button(
-    "Submit Finding",
-    type="primary",
-    width="stretch",
-    disabled=st.session_state.finding_submitted
-)
 
 # ==========================================
 # SUBMISSION
