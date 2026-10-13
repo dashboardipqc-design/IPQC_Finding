@@ -345,9 +345,9 @@ category = st.selectbox(
 
         "Material / Product - Material condition, expiry, identification, mixed material",
 
-        "Document / Record - Checklist, record, label, traceability, or documentation",
+        "Man / Personnel Compliance - Not following cleanroom, 5S, ESD, discipline requirement",
 
-        "Personnel Compliance - Not following cleanroom, 5S, ESD, discipline requirement"
+        "Document / Record - Checklist, record, label, traceability, or documentation"
     ],
     index=None,
     placeholder="Select Category",
