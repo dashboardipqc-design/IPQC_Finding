@@ -589,7 +589,15 @@ if submitted:
             "containment_action": containment_action,
             "auditee": auditee,
             "auditor": auditor,
-            "status": "Open"
+        
+            # ----------------------------------
+            # TECH REVIEW WORKFLOW
+            # ----------------------------------
+            "status": "PENDING REVIEW",
+            "severity": None,
+            "reviewed_by": None,
+            "reviewed_at": None,
+            "dashboard_include": False
         }
 
 
@@ -683,7 +691,7 @@ if submitted:
 
             st.write(
                 "Status:",
-                "Open"
+                "PENDING REVIEW"
             )
 
         
