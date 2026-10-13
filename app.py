@@ -343,9 +343,9 @@ category = st.selectbox(
 
         "Machine / Facility - Ionizer, machine abnormal reading, equipment/facility condition",
 
-        "Material / Product - Material condition, expiry, identification, mixed material",
-
         "Man / Personnel Compliance - Not following cleanroom, 5S, ESD, discipline requirement",
+
+        "Material / Product - Material condition, expiry, identification, mixed material",
 
         "Document / Record - Checklist, record, label, traceability, or documentation"
     ],
