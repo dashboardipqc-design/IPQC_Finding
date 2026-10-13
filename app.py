@@ -552,6 +552,10 @@ if submitted:
             )
         )
 
+        finding_datetime_ts = (
+            submitted_datetime.isoformat()
+        )
+
 
         # ----------------------------------
         # RECALCULATE SHIFT AT SUBMISSION
@@ -573,6 +577,7 @@ if submitted:
 
         finding_record = {
             "finding_datetime": finding_datetime,
+            "finding_datetime_ts": finding_datetime_ts,
             "shift": submitted_shift,
             "factory": factory,
             "area": area,
