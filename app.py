@@ -538,14 +538,6 @@ if submitted:
             ZoneInfo("Asia/Kuala_Lumpur")
         )
 
-        # ----------------------------------
-        # CAPTURE ACTUAL SUBMISSION TIME
-        # ----------------------------------
-
-        submitted_datetime = datetime.now(
-            ZoneInfo("Asia/Kuala_Lumpur")
-        )
-
         finding_datetime = (
             submitted_datetime.strftime(
                 "%d-%b-%Y %H:%M:%S"
